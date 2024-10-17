@@ -89,3 +89,24 @@ document.getElementById('provinciaSearchForm')?.addEventListener('submit', async
         embalsesListGeo.innerHTML = '<p>Error al cargar los embalses. Por favor, intenta nuevamente.</p>';
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
+
+    // Cargar el tema preferido desde el localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+        themeToggle.checked = true; // Mantener el interruptor en ON
+    }
+
+    themeToggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark');
+
+        // Guardar la preferencia del tema en el localStorage
+        if (document.body.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+});

@@ -7,16 +7,34 @@
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
+    <header>
+        <h1>Embalses App</h1>
+        <nav>
+            <a href="index">Inicio</a>
+            <a href="geolocalizacion">Buscar Embalses Cercanos</a>
+            <a href="provincia">Buscar por Provincia</a>
+        </nav>
+        <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider round"></span>
+        </label>
+    </header>
+
     <div class="container">
-        <h1>Buscar Embalses por Provincia</h1>
+        <h2>Buscar Embalses por Provincia</h2>
         <form id="provinciaSearchForm">
             <label for="provincia">Provincia:</label>
             <input type="text" id="provincia" name="provincia" required>
             <button type="submit">Buscar</button>
         </form>
         <div id="embalsesList"></div>
-        <button onclick="window.location.href='index'">Volver al Inicio</button>
+        <a href="index" class="button">Volver al Inicio</a>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Embalses App. Todos los derechos reservados.</p>
+    </footer>
+
     <script src="static/script.js"></script>
 </body>
 </html>

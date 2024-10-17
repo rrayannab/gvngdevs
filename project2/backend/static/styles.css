@@ -1,30 +1,146 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f4f8; /* Color de fondo claro */
+}
+
+header {
+    background-color: #4A90E2; /* Color azul */
+    color: white;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    display: flex;
+    justify-content: space-between; /* Espaciado entre elementos */
+    align-items: center; /* Centra verticalmente */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em; /* Tamaño de fuente más grande */
+}
+
+nav {
+    display: flex;
+    gap: 15px; /* Espacio entre los enlaces */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* Esquinas redondeadas */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+    background-color: #007BFF; /* Color de fondo para enlaces */
+}
+
+nav a:hover {
+    background-color: #0056b3; /* Color más oscuro en hover */
 }
 
 .container {
-    width: 80%;
+    max-width: 1200px; /* Anchura máxima */
     margin: 0 auto;
-    text-align: center;
     padding: 20px;
+    text-align: center;
 }
 
-h1 {
-    color: #333;
+/* Estilos para mostrar embalses */
+.embalse {
+    background-color: #e7f3fe; /* Color de fondo para cada embalse */
+    border: 1px solid #b3d4fc; /* Borde suave */
+    border-radius: 5px; /* Esquinas redondeadas */
+    padding: 15px;
+    margin: 10px 0; /* Espacio entre los embalses */
+    text-align: left; /* Alinear texto a la izquierda */
 }
 
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #007BFF;
+/* Estilos para el footer */
+footer {
+    background-color: #333; /* Color oscuro para el footer */
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    text-align: center;
+    padding: 15px 0;
+    position: relative; 
+    bottom: 0; 
+    width: 100%; /* Asegurarse de que el footer ocupe todo el ancho */
 }
 
-button:hover {
-    background-color: #0056b3;
+footer p {
+    margin: 0;
+}
+
+/* Estilos para el interruptor */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px; /* Esquinas redondeadas */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%; /* Esquina redonda */
+}
+
+/* El modo oscuro */
+body.dark {
+    background-color: #2C3E50; /* Color oscuro */
+}
+
+body.dark header {
+    background-color: #34495E; /* Color de header en modo oscuro */
+}
+
+body.dark nav a {
+    color: #ecf0f1; /* Color de texto en modo oscuro */
+}
+
+body.dark .slider {
+    background-color: #2196F3; /* Color del interruptor en modo oscuro */
+}
+
+body.dark .slider:before {
+    transform: translateX(26px);
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+
+    nav a {
+        margin: 5px 0; /* Espaciado vertical */
+    }
+
+    header h1 {
+        font-size: 1.5em; /* Tamaño de fuente más pequeño en móviles */
+    }
 }
