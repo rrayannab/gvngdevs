@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embalses App - Búsqueda por Provincia</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Buscar Embalses por Provincia</h1>
+        <form id="provinciaSearchForm">
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" name="provincia" required>
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="embalsesList"></div>
+        <button onclick="window.location.href='index'">Volver al Inicio</button>
+    </div>
+    <script src="static/script.js"></script>
+</body>
+</html>

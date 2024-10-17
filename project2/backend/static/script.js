@@ -1,7 +1,8 @@
-const apiUrl = 'http://127.0.0.1:5000/api/buscar'; // Cambia la URL para apuntar al backend
+const apiUrlGeolocalizacion = 'http://127.0.0.1:5000/buscar100km'; // URL para la búsqueda por geolocalización
+const apiUrlProvincia = 'http://127.0.0.1:5000/buscarPorProvincia'; // URL para la búsqueda por provincia
 const embalsesList = document.getElementById('embalsesList');
 
-document.getElementById('fetchEmbalsesBtn').addEventListener('click', fetchEmbalses);
+document.getElementById('fetchEmbalsesBtn')?.addEventListener('click', fetchEmbalses);
 
 async function fetchEmbalses() {
     // Obtener la ubicación del usuario
@@ -17,7 +18,7 @@ function successCallback(position) {
     const lon = position.coords.longitude;  // Obtener longitud
 
     // Enviar la ubicación al backend
-    fetch(`${apiUrl}?latitud=${lat}&longitud=${lon}`)
+    fetch(`${apiUrlGeolocalizacion}?latitud=${lat}&longitud=${lon}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la red');
@@ -58,3 +59,33 @@ function mostrarEmbalses(embalses) {
         embalsesList.appendChild(embalseDiv);
     });
 }
+
+// Funcionalidad para la búsqueda por provincia
+document.getElementById('provinciaSearchForm')?.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Evitar el envío del formulario tradicional
+
+    const provincia = document.getElementById('provincia').value;
+
+    try {
+        const response = await fetch(`${apiUrlProvincia}?provincia=${provincia}`);
+        
+        if (!response.ok) {
+            throw new Error('Error en la red');
+        }
+
+        const data = await response.json();
+        console.log('Datos recibidos de la API:', data); // Para depuración
+        
+        // Asegúrate de acceder correctamente al arreglo de embalses
+        const embalses = data.items; // Acceder al arreglo correcto
+        if (!embalses || embalses.length === 0) {
+            embalsesListGeo.innerHTML = '<p>No se encontraron embalses.</p>';
+            return;
+        }
+        
+        mostrarEmbalses(embalses); // Llama a la función con el arreglo correcto
+    } catch (error) {
+        console.error('Error al obtener los embalses:', error);
+        embalsesListGeo.innerHTML = '<p>Error al cargar los embalses. Por favor, intenta nuevamente.</p>';
+    }
+});
